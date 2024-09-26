@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dcba</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="/api" method="post">
+        <div class="form-group">
+          <label for="firstName">First Name:</label><br />
+          <input type="text" name="firstName" />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name:</label><br />
+          <input type="text" name="lastName" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label><br />
+          <input type="email" name="email" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone number:</label><br />
+          <input type="tel" name="phone" />
+        </div>
+
+        <div class="form-group">
+          <label for="course">Select your course of interest:</label>
+          <select id="courses" name="choice">
+            <option value="business-analysis"><%= courses[0].course %></option>
+            <option value="data-analysis"><%= courses[1].course%></option>
+            <option value="ui/ux-design"><%= courses[2].course%></option>
+            <option value="digital-marketing"><%= courses[3].course%></option>
+          </select>
+        </div>
+        <!-- <a href="#" id="popup-link">Submit</a> -->
+        <button type="submit">Submit</button>
+      </form>
+
+      <% if(locals.fname && locals.lname && locals.email && locals.phone &&
+      locals.result){%> <%- include("partials/json") %> <%}%>
+    </div>
+  </body>
+
+  <script>
+    // Get the elements by their ID
+    var popupLink = document.getElementById("popup-link");
+    var popupWindow = document.getElementById("popup-window");
+    var closeButton = document.getElementById("close-button");
+    // Show the pop-up window when the link is clicked
+    popupLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      popupWindow.style.display = "block";
+    });
+    // Hide the pop-up window when the close button is clicked
+    closeButton.addEventListener("click", function () {
+      popupWindow.style.display = "none";
+    });
+  </script>
+</html>
