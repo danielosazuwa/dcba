@@ -4,7 +4,7 @@ const ejs = require("ejs");
 
 const app = express();
 const port = 3000;
-const courses = require("../dcba/database/database");
+const courses = require("./database/database");
 
 app.set("view engine", "ejs");
 
